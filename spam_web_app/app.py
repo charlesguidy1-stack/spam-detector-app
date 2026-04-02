@@ -115,10 +115,14 @@ st.markdown("""
 
 @st.cache_resource
 def load_models():
-    vectorizer = joblib.load("saved_models/vectorizer.pkl")
-    nb_model = joblib.load("saved_models/naive_bayes.pkl")
-    lr_model = joblib.load("saved_models/logistic_regression.pkl")
-    mlp_model = joblib.load("saved_models/neural_network.pkl")
+    base_dir = os.path.dirname(__file__)
+    model_dir = os.path.join(base_dir, "saved_models")
+
+    vectorizer = joblib.load(os.path.join(model_dir, "vectorizer.pkl"))
+    nb_model = joblib.load(os.path.join(model_dir, "naive_bayes.pkl"))
+    lr_model = joblib.load(os.path.join(model_dir, "logistic_regression.pkl"))
+    mlp_model = joblib.load(os.path.join(model_dir, "neural_network.pkl"))
+
     return vectorizer, nb_model, lr_model, mlp_model
 
 
